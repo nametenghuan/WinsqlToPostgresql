@@ -1,0 +1,2 @@
+# WinsqlToPostgresql
+使用Mybatis实现将Sql Server数据库的数据实时同步到Postgresql数据库中
