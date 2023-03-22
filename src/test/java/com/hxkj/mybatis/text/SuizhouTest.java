@@ -96,7 +96,7 @@ public class SuizhouTest {
             System.out.println(dict);
         }*/
 
-        TDealdataDict suiZhouTDD = mapper.getSuiZhouTDD();
+        Map suiZhouTDD = mapper.getSuiZhouTDD();
         System.out.println(suiZhouTDD);
 
     }

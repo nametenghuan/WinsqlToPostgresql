@@ -18,7 +18,7 @@ import java.util.Map;
 public interface TDealdataDictMapper {
 
     TDealdataDict getTDD(@Param("tddArea") String tddArea, @Param("tddDataType") String tddDataType);
-    TDealdataDict getSuiZhouTDD();
+    Map getSuiZhouTDD();
 
     List<Map> getAllTDD();
 }
