@@ -17,4 +17,8 @@
         where tdd_area = 'suizhou' and tdd_data_type = 'hydrology_data';
     </select>
 
+    <update id="updateDateTime" parameterType="date">
+        update t_dealdata_dict set tdd_newtime = #{date} where tdd_area = 'suizhou' and tdd_data_type = 'hydrology_data' and <![CDATA[tdd_newtime < #{date}]]>;
+    </update>
+
 </mapper>

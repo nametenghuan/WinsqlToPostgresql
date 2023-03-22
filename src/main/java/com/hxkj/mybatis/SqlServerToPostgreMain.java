@@ -1,5 +1,7 @@
 package com.hxkj.mybatis;
 
+import com.hxkj.mybatis.operation.OperationCode;
+
 /**
  * 要尊重编程
  *
@@ -8,4 +10,9 @@ package com.hxkj.mybatis;
  * @Description: 程序入库
  */
 public class SqlServerToPostgreMain {
+
+    public static void main(String[] args) {
+        OperationCode operationCode = new OperationCode();
+        operationCode.run();
+    }
 }

@@ -1,5 +1,6 @@
 package com.hxkj.mybatis.mapper;
 
+import com.hxkj.mybatis.entity.StPptnR;
 import com.hxkj.mybatis.entity.SuizhouHydrologyData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -17,4 +18,10 @@ public interface SuizhouHydrologyDataMapper {
 
     List<SuizhouHydrologyData> getAllSuizhouData();
 
+    /**
+     * 插入一条数据
+     * @param stPptnR
+     * @return
+     */
+    int insert(StPptnR stPptnR);
 }

@@ -6,4 +6,8 @@
         select * from [ST_PPTN_R];
     </select>
 
+    <select id="getSprByDateTime" resultType="com.hxkj.mybatis.entity.StPptnR">
+        select * from [ST_PPTN_R] where TM > #{tdd_newtime};
+    </select>
+
 </mapper>

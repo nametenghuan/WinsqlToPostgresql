@@ -4,6 +4,7 @@ import com.hxkj.mybatis.entity.TDealdataDict;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,4 +22,11 @@ public interface TDealdataDictMapper {
     Map getSuiZhouTDD();
 
     List<Map> getAllTDD();
+
+    /**
+     * 更新tdd最新时间
+     * @param date
+     * @return
+     */
+    int updateDateTime(Date date);
 }
