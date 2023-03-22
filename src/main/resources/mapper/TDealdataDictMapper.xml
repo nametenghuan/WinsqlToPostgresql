@@ -4,16 +4,11 @@
 
 
     <select id="getTDD" resultType="com.hxkj.mybatis.entity.TDealdataDict">
-        select *
-        from t_dealdata_dict
-        where tdd_area = #{tddArea}
-          and tdd_data_type = #{tddDataType}
+        select * from t_dealdata_dict where tdd_area = #{tddArea} and tdd_data_type = #{tddDataType};
     </select>
 
     <select id="getSuiZhouTDD" resultType="com.hxkj.mybatis.entity.TDealdataDict">
-        select *
-        from t_dealdata_dict
-        where tdd_area = 'suizhou' and tdd_data_type = 'hydrology_data';
+        select * from t_dealdata_dict where tdd_area = 'suizhou' and tdd_data_type = 'hydrology_data';
     </select>
 
     <select id="getAllTDD" resultType="java.util.Map">

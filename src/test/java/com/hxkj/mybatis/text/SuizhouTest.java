@@ -88,15 +88,16 @@ public class SuizhouTest {
     public void testTDD() {
         SqlSession sqlSession = SqlSessionUtil.getSqlSession("mybaties-config-pg.xml");
         TDealdataDictMapper mapper = sqlSession.getMapper(TDealdataDictMapper.class);
-        TDealdataDict tDealdataDict = mapper.getTDD("suizhou", "hydrology_data");
-        System.out.println(tDealdataDict);
+//        TDealdataDict tDealdataDict = mapper.getTDD("suizhou", "hydrology_data");
+//        System.out.println(tDealdataDict);
+
         /*List<Map> allTDD = mapper.getAllTDD();
         for (Map dict : allTDD) {
             System.out.println(dict);
         }*/
 
-        /*TDealdataDict suiZhouTDD = mapper.getSuiZhouTDD();
-        System.out.println(suiZhouTDD);*/
+        TDealdataDict suiZhouTDD = mapper.getSuiZhouTDD();
+        System.out.println(suiZhouTDD);
 
     }
 }
