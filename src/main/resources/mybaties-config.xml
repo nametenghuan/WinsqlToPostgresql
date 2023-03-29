@@ -5,7 +5,7 @@
 <configuration>
     <!-- 运行环境配置 -->
     <!--default属性：指定使用哪一个运行环境  -->
-    <environments default="development">
+    <environments default="suizhousqlserver">
         <!--id属性：唯一标识一个运行环境  -->
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -14,6 +14,16 @@
                 <property name="url" value="jdbc:sqlserver://49.232.207.135:1433;databaseName=master"/>
                 <property name="username" value="sa"/>
                 <property name="password" value="hxkj123.."/>
+            </dataSource>
+        </environment>
+        <!--    随州微软数据库    -->
+        <environment id="suizhousqlserver">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+                <property name="url" value="jdbc:sqlserver://172.20.38.126:1433;databaseName=szqx;trustStorePassword=true;encrypt=false;trustStore=true;hostNameInCertificate=true;trustServerCertificate=true;"/>
+                <property name="username" value="sa"/>
+                <property name="password" value="1q2w3e."/>
             </dataSource>
         </environment>
         <!--    将数据写入     -->
@@ -34,5 +44,6 @@
         <!--        <mapper resource="mybatis/UserMapper.xml"/>-->
         <mapper resource="mapper/SuizhouHydrologyDataMapper.xml"></mapper>
         <mapper resource="mapper/StPptnRMapper.xml"></mapper>
+        <mapper resource="mapper/StStbprpBMapper.fxml"></mapper>
     </mappers>
 </configuration>

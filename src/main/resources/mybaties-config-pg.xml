@@ -5,7 +5,7 @@
 <configuration>
     <!-- 运行环境配置 -->
     <!--default属性：指定使用哪一个运行环境  -->
-    <environments default="development">
+    <environments default="suizhou">
         <!--id属性：唯一标识一个运行环境  -->
         <environment id="development">
             <!-- 事务管理器配置，type="JDBC"：mybatis框架默认使用jdbc事务 -->
@@ -16,6 +16,18 @@
                 <property name="url" value="jdbc:postgresql://221.122.67.138:5432/postgres" />
                 <property name="username" value="postgre" />
                 <property name="password" value="test123456" />
+            </dataSource>
+        </environment>
+        <!--    随州远程部署配置    -->
+        <environment id="suizhou">
+            <!-- 事务管理器配置，type="JDBC"：mybatis框架默认使用jdbc事务 -->
+            <transactionManager type="JDBC" />
+            <!--数据源配置，type="POOLED"：mybatis框架提供的连接池  -->
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver" />
+                <property name="url" value="jdbc:postgresql://172.20.38.97:5432/postgres" />
+                <property name="username" value="postgre" />
+                <property name="password" value="hxkj123.." />
             </dataSource>
         </environment>
     </environments>
