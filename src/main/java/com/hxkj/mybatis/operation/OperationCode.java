@@ -1,6 +1,7 @@
 package com.hxkj.mybatis.operation;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.hxkj.mybatis.Utils.RedisUtil;
 import com.hxkj.mybatis.Utils.SqlSessionUtil;
 import com.hxkj.mybatis.entity.StPptnR;
 import com.hxkj.mybatis.mapper.StPptnRMapper;
@@ -53,15 +54,30 @@ public class OperationCode {
          * 3.在postgre里插入一条数据
          */
         SuizhouHydrologyDataMapper suizhouHydrologyDataMapper = pgsqlSession.getMapper(SuizhouHydrologyDataMapper.class);
-        int num = suizhouHydrologyDataMapper.insert(stPptnRList.get(0));
-        System.out.println(num);
+        int num = 0;
+        for (StPptnR r : stPptnRList) {
+            try {
+                num += suizhouHydrologyDataMapper.insert(r);
+            } catch (Exception e) {
+                System.out.println("插入的数据已存在！");
+            }
+        }
+        System.out.println("入库条数：" + num);
 
-        if (num > 0) {
-            // 插入成功后更新tdd最新时间
-            Date date = stPptnRList.get(0).getTm();
+        // 插入成功后更新tdd最新时间
+        try {
+            Date date = stPptnRList.stream().map(StPptnR::getTm).max(Date::compareTo).get(); // 获取集合中最新的日期参数
+            //Date date = stPptnRList.get(stPptnRList.size() - 1).getTm();
             int upd = mapper.updateDateTime(date);
-            if (upd > 0) System.out.println("tdd最新时间更新成功！");
-            else System.out.println("tdd最新时间更新失败！");
+            if (upd > 0) {
+                System.out.println("清除redis缓存水文tdd配置数据！");
+                RedisUtil.delRedisCache();
+                System.out.println("tdd最新时间更新成功！");
+            } else {
+                System.out.println("tdd最新时间更新失败！");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
         return true;
