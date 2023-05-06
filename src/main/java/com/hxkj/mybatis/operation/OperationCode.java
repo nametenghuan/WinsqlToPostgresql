@@ -57,6 +57,13 @@ public class OperationCode {
         int num = 0;
         for (StPptnR r : stPptnRList) {
             try {
+                // 验证将要入库的数据日期是否合法
+                Date tatatm = r.getTm();
+
+                if (tatatm.after(new Date())) {
+                    System.out.println("数据最新时间不合法！" + r.getTm());
+                    continue;
+                }
                 num += suizhouHydrologyDataMapper.insert(r);
             } catch (Exception e) {
                 System.out.println("插入的数据已存在！");
