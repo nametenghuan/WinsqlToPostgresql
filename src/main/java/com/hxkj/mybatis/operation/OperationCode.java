@@ -47,7 +47,6 @@ public class OperationCode {
             return false;
         }
         System.out.println(stPptnRList.size());
-        System.out.println(stPptnRList.get(0));
 
 
         /**
